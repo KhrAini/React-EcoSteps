@@ -9,7 +9,7 @@ function App() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const apiKey = "AIzaSyAtY1guHkiZvVBXhnT-05mbn0gEe5iscfw"; // Ganti dengan API key yang valid
+  const apiKey = "AIzaSyAtY1guHkiZvVBXhnT-05mbn0gEe5iscfw"; 
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
 
@@ -88,10 +88,9 @@ function App() {
     setIsLoading(false);
   };
 
-  // Fungsi untuk menangani event ketika tombol Enter ditekan
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) { // Mencegah enter dengan shift
-      handlePromptSubmit(e); // Panggil fungsi submit
+    if (e.key === "Enter" && !e.shiftKey) { 
+      handlePromptSubmit(e); 
     }
   };
 
