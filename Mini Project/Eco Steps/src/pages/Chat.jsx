@@ -113,7 +113,7 @@ function App() {
             type="text"
             value={inputUser}
             onChange={(e) => setInputUser(e.target.value)}
-            onKeyDown={handleKeyDown}  // Tambahkan onKeyDown
+            onKeyDown={handleKeyDown}  
             className="border-2 border-[#79896f] text-[#42632d] font-semibold placeholder-[#96a88b] py-2 px-4 rounded-full focus:outline-none focus:border-[#42632d] w-full"
             placeholder="Tanyakan sesuatu pada Eko!"
           />
