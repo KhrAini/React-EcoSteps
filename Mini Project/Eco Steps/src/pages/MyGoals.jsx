@@ -2,21 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const MyGoals = () => {
-  const [myGoals, setMyGoals] = useState([]); // Menyimpan goals yang diambil dari API
-  const [userId, setUserId] = useState(null); // Menyimpan userId yang diambil dari localStorage
-  const navigate = useNavigate(); // Inisialisasi navigate
+  const [myGoals, setMyGoals] = useState([]);
+  const [userId, setUserId] = useState(null);
+  const navigate = useNavigate();
 
-  // Ambil userId dari localStorage dan arahkan ke login jika tidak ada
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user && user.userId) {
       setUserId(user.userId);
     } else {
-      navigate('/login'); // Arahkan ke halaman login jika tidak ada userId
+      navigate('/login');
     }
   }, [navigate]);
 
-  // Ambil data goals dari API setelah userId tersedia
   useEffect(() => {
     const fetchMyGoals = async () => {
       try {
@@ -37,7 +35,6 @@ const MyGoals = () => {
     }
   }, [userId]);
 
-  // Menangani perubahan status checkbox goal
   const handleCheckboxChange = (goalId) => {
     setMyGoals((prevGoals) =>
       prevGoals.map((goal) =>
@@ -46,7 +43,6 @@ const MyGoals = () => {
     );
   };
 
-  // Hitung progress berdasarkan jumlah goal yang dicentang
   const calculateProgress = () => {
     const totalGoals = myGoals.length;
     const completedGoals = myGoals.filter((goal) => goal.status).length;
@@ -62,8 +58,8 @@ const MyGoals = () => {
             <input
               type="checkbox"
               id={`my-goal-${goal.goalId}`}
-              checked={goal.status} // Tampilkan status checkbox
-              onChange={() => handleCheckboxChange(goal.goalId)} // Ubah status goal
+              checked={goal.status}
+              onChange={() => handleCheckboxChange(goal.goalId)}
               className="mr-2"
             />
             <label htmlFor={`my-goal-${goal.goalId}`} className="text-lg">{goal.name}</label>
