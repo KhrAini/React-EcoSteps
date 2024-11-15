@@ -17,7 +17,7 @@ const Home = () => {
           className="bg-[#00703c] text-white font-semibold py-3 px-8 rounded-full hover:bg-black transition duration-300"
           onClick={handleClick}
         >
-          Tantang Diri Anda
+          Mulai Langkahmu!
         </button>
       </div>
 
