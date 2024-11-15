@@ -10,7 +10,6 @@ import logout from '../assets/logout.png';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Memantau scroll dan mengubah status isScrolled
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -20,10 +19,8 @@ const Header = () => {
       }
     };
 
-    // Menambahkan event listener
     window.addEventListener('scroll', handleScroll);
 
-    // Membersihkan event listener saat komponen dibersihkan
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -32,13 +29,11 @@ const Header = () => {
   return (
     <header className={`transition-all duration-300 fixed w-full top-0 left-0 z-50 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
       <div className="flex items-center justify-between w-full max-w-[1200px] mx-auto px-4">
-        {/* Section kiri untuk logo dan teks */}
         <div className="flex items-center space-x-4 bg-white py-0.20 px-6 my-2 rounded-full">
           <img src={logo} className="w-[42px]" alt="Logo" />
           <h1 className="text-green-600 font-bold text-[24px]">Eco Steps</h1>
         </div>
         
-        {/* Section kanan untuk menu */}
         <div className="ml-auto">
           <ul className="flex gap-4 list-none">
             <li>
