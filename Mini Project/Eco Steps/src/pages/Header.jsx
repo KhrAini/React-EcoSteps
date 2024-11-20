@@ -44,7 +44,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/goals">
+              <Link to="/my-goals">
                 <button className="bg-white text-white font-medium text-[14px] uppercase py-2 px-4 rounded-full hover:bg-black">
                   <img src={myGoals} alt="My Goals" className="w-6 h-6" />
                 </button>

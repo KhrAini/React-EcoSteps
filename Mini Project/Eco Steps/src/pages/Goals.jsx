@@ -15,11 +15,14 @@ const GoalsPage = () => {
         if (response.ok) {
           const data = await response.json();
           setGoals(data);
+        } else {
+          console.error('Gagal memuat data goals');
         }
       } catch (error) {
         console.error('Error fetching goals:', error);
       }
     };
+
     fetchGoals();
   }, []);
 
@@ -27,11 +30,9 @@ const GoalsPage = () => {
     setCheckedGoals((prevChecked) => {
       const isGoalChecked = prevChecked.find((goal) => goal.goalId === goalId);
       if (isGoalChecked) {
-        // Jika goal sudah dipilih, hapus dari checkedGoals
         return prevChecked.filter((goal) => goal.goalId !== goalId);
       } else {
         const selectedGoal = goals.find((goal) => goal.goalId === goalId);
-        // Tambahkan goal yang dipilih ke checkedGoals
         return [...prevChecked, { ...selectedGoal, status: true }];
       }
     });
@@ -54,6 +55,7 @@ const GoalsPage = () => {
         goalId: goal.goalId,
         name: goal.name,
         status: goal.status,
+        statusProgress: goal.statusProgress,
       })),
     };
 
@@ -92,7 +94,6 @@ const GoalsPage = () => {
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold text-center mb-4">Pilih Goals Anda</h2>
 
-      {/* Search Bar */}
       <div className="mb-4">
         <input
           type="text"
