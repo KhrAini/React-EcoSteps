@@ -11,7 +11,7 @@ import MyGoals from './pages/MyGoals';
 const App = () => {
   return (
     <Router>
-      <Header /> {/* Menambahkan Header di sini */}
+      <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -19,6 +19,8 @@ const App = () => {
         <Route path='/Chat' element={<Chat/>}/>
         <Route path='/Goals' element={<Goals/>}/>
         <Route path='/my-goals' element={<MyGoals/>}/>
+
+        
 
       </Routes>
     </Router>
