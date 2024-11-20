@@ -111,11 +111,10 @@ const MyGoals = () => {
     }
   };
 
-  // Memeriksa apakah ada goal yang dicentang
   const hasCheckedGoals = myGoals.some((goal) => goal.statusProgress === 1);
 
   return (
-    <div className="container mt-20 mx-auto p-8 bg-gray-100 rounded-lg shadow-xl pt-20"> {/* Menambahkan padding-top */}
+    <div className="container mt-20 mx-auto p-8 bg-gray-100 rounded-lg shadow-xl pt-20">
       <h2 className="text-3xl font-bold text-center text-gray-700 mb-6">My Goals</h2>
       
       {myGoals.length === 0 ? (
