@@ -111,8 +111,6 @@ const MyGoals = () => {
     }
   };
 
-  const hasCheckedGoals = myGoals.some((goal) => goal.statusProgress === 1);
-
   return (
     <div className="container mt-20 mx-auto p-8 bg-gray-100 rounded-lg shadow-xl pt-20">
       <h2 className="text-3xl font-bold text-center text-gray-700 mb-6">My Goals</h2>
@@ -161,41 +159,39 @@ const MyGoals = () => {
             ))}
           </div>
 
-          {/* Menampilkan lingkaran progress jika ada goal yang dicentang */}
-          {hasCheckedGoals && (
-            <div className="w-1/3 bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold text-center text-gray-700 mb-4">Progress</h3>
-              <div className="relative w-full h-40 mx-auto">
-                <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                  <circle cx="18" cy="18" r="16" fill="none" strokeWidth="3" className="stroke-current text-gray-200" />
-                  <circle
-                    cx="18"
-                    cy="18"
-                    r="16"
-                    fill="none"
-                    strokeWidth="3"
-                    className="stroke-current text-green-500"
-                    strokeDasharray={`${progress} 100`}
-                    strokeDashoffset="0"
-                    strokeLinecap="round"
-                  />
-                </svg>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <span className="text-3xl font-bold text-green-600">{progress.toFixed(0)}%</span>
-                  <div className="text-sm text-gray-500">Progress</div>
-                </div>
+          {/* Menampilkan lingkaran progress selalu muncul */}
+          <div className="w-1/3 bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-bold text-center text-gray-700 mb-4">Progress</h3>
+            <div className="relative w-full h-40 mx-auto">
+              <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                <circle cx="18" cy="18" r="16" fill="none" strokeWidth="3" className="stroke-current text-gray-200" />
+                <circle
+                  cx="18"
+                  cy="18"
+                  r="16"
+                  fill="none"
+                  strokeWidth="3"
+                  className="stroke-current text-green-500"
+                  strokeDasharray={`${progress} 100`}
+                  strokeDashoffset="0"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <span className="text-3xl font-bold text-green-600">{progress.toFixed(0)}%</span>
+                <div className="text-sm text-gray-500">Progress</div>
               </div>
-              <button
-                onClick={handleCompleteGoal}
-                className={`w-full mt-12 py-2 px-4 rounded-lg text-white ${
-                  progress === 100 ? "bg-green-500 hover:bg-green-600" : "bg-gray-400 cursor-not-allowed"
-                }`}
-                disabled={progress !== 100}
-              >
-                Selesai
-              </button>
             </div>
-          )}
+            <button
+              onClick={handleCompleteGoal}
+              className={`w-full mt-12 py-2 px-4 rounded-lg text-white ${
+                progress === 100 ? "bg-green-500 hover:bg-green-600" : "bg-gray-400 cursor-not-allowed"
+              }`}
+              disabled={progress !== 100}
+            >
+              Selesai
+            </button>
+          </div>
         </div>
       )}
     </div>
