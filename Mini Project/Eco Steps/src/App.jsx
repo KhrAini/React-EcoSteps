@@ -8,7 +8,7 @@ import Chat from './pages/Chat';
 import Goals from './pages/Goals';
 import MyGoals from './pages/MyGoals';
 import History from './pages/History';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from '../src/components/ProtectedRoute';
 
 const App = () => {
   return (
@@ -18,46 +18,45 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
-
-          <Route 
-            path="/home" 
+          <Route
+            path="/home"
             element={
               <ProtectedRoute>
                 <Home />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/chat" 
+          <Route
+            path="/chat"
             element={
               <ProtectedRoute>
                 <Chat />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/goals" 
+          <Route
+            path="/goals"
             element={
               <ProtectedRoute>
                 <Goals />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/my-goals" 
+          <Route
+            path="/my-goals"
             element={
               <ProtectedRoute>
                 <MyGoals />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/history" 
+          <Route
+            path="/history"
             element={
               <ProtectedRoute>
                 <History />
               </ProtectedRoute>
-            } 
+            }
           />
         </Routes>
       </div>

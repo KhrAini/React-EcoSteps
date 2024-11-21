@@ -33,7 +33,7 @@ const LoginPage = () => {
       setError('');
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/home');
-      console.log('User ID:', user.userId); // Debugging: Cetak userId
+      console.log('User ID:', user.userId); 
     } else {
       setError('Nama atau password salah');
     }
