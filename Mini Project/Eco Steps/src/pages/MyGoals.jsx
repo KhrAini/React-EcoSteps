@@ -159,7 +159,6 @@ const MyGoals = () => {
             ))}
           </div>
 
-          {/* Menampilkan lingkaran progress selalu muncul */}
           <div className="w-1/3 bg-white p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-bold text-center text-gray-700 mb-4">Progress</h3>
             <div className="relative w-full h-40 mx-auto">
