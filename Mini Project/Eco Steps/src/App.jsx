@@ -22,6 +22,7 @@ const App = () => {
           <Route path='/Goals' element={<Goals />} />
           <Route path='/my-goals' element={<MyGoals />} />
           <Route path='/history' element={<History />} />
+
         </Routes>
       </div>
     </Router>
