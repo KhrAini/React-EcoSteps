@@ -17,27 +17,28 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-[#f8f8f8] overflow-y-scroll m-0 p-0">
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row min-h-screen bg-[#42632d] m-0 p-0 items-center">
-        <div className="flex-1 px-6 md:px-12 text-center md:text-left">
+      <div className="flex min-h-screen bg-[#42632d] m-0 p-0">
+        {/* Konten teks di kiri */}
+        <div className="flex-1 flex items-center px-6 md:px-12">
           <div className="text-[#f8f8f8]">
-            <h1 className="text-4xl md:text-8xl font-extrabold mb-4">
+            <h1 className="text-4xl md:text-8xl font-extrabold mb-4 text-left">
               Mari Sembuhkan Bumi
             </h1>
-            <p className="text-xl md:text-2xl mb-6">
+            <p className="text-xl md:text-xl mb-6 text-left">
               Satu langkah lebih maju menuju bumi yang lebih sehat.
             </p>
           </div>
         </div>
-        <div className="flex-1">
-          <img
-            src={leg}
-            alt="leg"
-            className="w-full h-auto object-cover max-w-full"
+
+        <div className="flex-1 h-auto">
+          <img 
+            src={leg} 
+            alt="leg" 
+            className="w-full h-full object-cover max-w-full"
           />
         </div>
       </div>
 
-      {/* Get Started Section */}
       <div className="bg-[#f8f8f8] py-10 text-center">
         <p className="text-3xl text-[#00703c] font-semibold mb-4">
           Mulai langkah pertamamu wujudkan bumi lebih sehat
