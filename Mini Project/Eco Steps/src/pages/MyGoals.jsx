@@ -42,25 +42,56 @@ const MyGoals = () => {
     }
   }, [userId]);
 
-  const handleCheckboxChange = (goalId) => {
+  const handleCheckboxChange = async (goalId) => {
     const goal = myGoals.find((g) => g.goalId === goalId);
+  
     if (goal.statusProgress === 1) {
       const confirmCancel = window.confirm("Yakin belum selesai?");
       if (!confirmCancel) {
         return;
       }
     }
-    setMyGoals((prevGoals) =>
-      prevGoals.map((goal) =>
-        goal.goalId === goalId
-          ? {
-              ...goal,
-              statusProgress: goal.statusProgress === 0 ? 1 : 0,
-            }
-          : goal
-      )
-    );
+  
+    const updatedStatus = goal.statusProgress === 0 ? 1 : 0;
+  
+    try {
+      // Kirim perubahan status ke API
+      const response = await fetch(
+        `https://6734559ba042ab85d119b5bc.mockapi.io/myGoals/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userGoals: myGoals.map((g) =>
+              g.goalId === goalId ? { ...g, statusProgress: updatedStatus } : g
+            ),
+          }),
+        }
+      );
+  
+      if (response.ok) {
+        console.log("Status goal berhasil diperbarui di API");
+        setMyGoals((prevGoals) =>
+          prevGoals.map((goal) =>
+            goal.goalId === goalId
+              ? { ...goal, statusProgress: updatedStatus }
+              : goal
+          )
+        );
+      } else {
+        console.error("Gagal memperbarui status goal di API");
+      }
+    } catch (error) {
+      console.error("Error updating goal status:", error);
+    }
   };
+
+  const handleClick = () => {
+    navigate('/goals');
+  };
+  
 
   const calculateProgress = () => {
     const totalGoals = myGoals.length;
@@ -116,7 +147,15 @@ const MyGoals = () => {
       <h2 className="text-3xl font-bold text-center text-gray-700 mb-6">My Goals</h2>
       
       {myGoals.length === 0 ? (
-        <p className="text-center text-xl text-gray-700">Ayo mulai langkahmu sekarang!</p>
+        <div className="text-center">
+          <p className="text-xl text-gray-700 pb-4">Ayo mulai langkahmu sekarang!</p>
+          <button
+            className="bg-green-600 text-white shadow-lg font-semibold py-3 px-8 rounded-full hover:bg-black transition duration-300"
+            onClick={handleClick}
+          >
+            Mulai Langkahmu!
+          </button>
+        </div>
       ) : (
         <div className="flex flex-wrap gap-6">
           <div className="flex-1 space-y-4">

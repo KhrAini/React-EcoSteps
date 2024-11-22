@@ -102,7 +102,7 @@ const GoalsPage = () => {
         backgroundColor: 'rgba(34, 139, 34, 0.2)',
       }}
     >
-      <div className="max-w-7xl w-full bg-white p-5 md:p-10 rounded-lg shadow-lg mt-18">
+      <div className="max-w-7xl w-full bg-white p-5 md:p-10 rounded-lg shadow-lg mt-24">
         <div className="flex items-center justify-center flex-wrap">
           <img
             src={eko}
