@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import pattern from '../assets/pattern.png';
+import eko from '../assets/eko.png';
 
 const GoalsPage = () => {
   const [goals, setGoals] = useState([]);
@@ -91,46 +93,88 @@ const GoalsPage = () => {
   );
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold text-center mb-4">Pilih Goals Anda</h2>
+    <div
+      className="min-h-screen flex items-center justify-center px-4 md:px-8"
+      style={{
+        backgroundImage: `url(${pattern})`,
+        backgroundRepeat: 'repeat',
+        backgroundSize: 'contain',
+        backgroundColor: 'rgba(34, 139, 34, 0.2)',
+      }}
+    >
+      <div className="max-w-7xl w-full bg-white p-5 md:p-10 rounded-lg shadow-lg mt-18">
+        <div className="flex items-center justify-center flex-wrap">
+          <img
+            src={eko}
+            alt="Maskot Eko"
+            className="w-16 h-auto mr-4 sm:w-24 md:w-32"
+          />
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-[#42632d] mb-4">
+            Ayo pilih goals yang ingin kamu capai!
+          </h2>
+        </div>
 
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Cari goal..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-2 w-full border rounded-lg"
-        />
-      </div>
 
-      <div>
-        {filteredGoals.map((goal) => (
-          <div key={goal.goalId} className="flex items-center mb-3">
-            <input
-              type="checkbox"
-              id={`goal-${goal.goalId}`}
-              checked={checkedGoals.some((checkedGoal) => checkedGoal.goalId === goal.goalId)}
-              onChange={() => handleCheckboxChange(goal.goalId)}
-              className="mr-2"
-            />
-            <label htmlFor={`goal-${goal.goalId}`} className="text-lg">{goal.name}</label>
-          </div>
-        ))}
-      </div>
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Cari goal..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="p-2 w-full border rounded-lg"
+          />
+        </div>
 
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={handleSubmit}
-          className={`py-2 px-6 rounded-lg ${
-            checkedGoals.filter((goal) => goal.status).length >= 2
-              ? 'bg-green-500 hover:bg-green-600 text-white'
-              : 'bg-gray-300 text-gray-600 cursor-not-allowed'
-          }`}
-          disabled={checkedGoals.filter((goal) => goal.status).length < 2}
-        >
-          Submit Goals
-        </button>
+        <div>
+          {filteredGoals.map((goal) => (
+            <div key={goal.goalId} className="flex items-center mb-3">
+              <button
+                onClick={() => handleCheckboxChange(goal.goalId)}
+                className={`w-10 h-10 flex items-center justify-center border-2 rounded-full ${
+                  checkedGoals.some((checkedGoal) => checkedGoal.goalId === goal.goalId)
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-200 text-gray-400'
+                } transition-all`}
+              >
+                {checkedGoals.some((checkedGoal) => checkedGoal.goalId === goal.goalId) ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                ) : (
+                  <span className="text-xl">✔</span>
+                )}
+              </button>
+              <label htmlFor={`goal-${goal.goalId}`} className="text-lg ml-2">
+                {goal.name}
+              </label>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={handleSubmit}
+            className={`py-2 px-6 rounded-lg ${
+              checkedGoals.filter((goal) => goal.status).length >= 2
+                ? 'bg-green-500 hover:bg-green-600 text-white'
+                : 'bg-gray-300 text-gray-600 cursor-not-allowed'
+            }`}
+            disabled={checkedGoals.filter((goal) => goal.status).length < 2}
+          >
+            Submit Goals
+          </button>
+        </div>
       </div>
     </div>
   );
