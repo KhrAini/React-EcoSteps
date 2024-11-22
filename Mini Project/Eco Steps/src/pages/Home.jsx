@@ -123,7 +123,7 @@ const Home = () => {
         </Swiper>
       </div>
 
-      <div className="flex min-h-screen bg-white p-8 flex-col justify-center items-center text-center text-[#42632d]">
+      <div className="flex min-h-screen bg-gray-200 p-8 flex-col justify-center items-center text-center text-[#42632d]">
       <div className="relative py-5 mb-6 flex items-center justify-center">
         <img
           src={eko}
@@ -135,8 +135,8 @@ const Home = () => {
         </p>
       </div>
 
-        <h1 className="text-3xl md:text-5xl font-extrabold mb-6">Bumi Kita, Tanggung Jawab Kita</h1>
-        <p className="text-lg md:text-2xl mb-8">
+        <h1 className="text-3xl md:text-6xl font-extrabold mb-6">Bumi Kita, Tanggung Jawab Kita</h1>
+        <p className="text-lg md:text-xl mb-8">
           Bergabunglah untuk memulihkan bumi yang rusak dan menjaga kelestariannya.
         </p>
         <button
