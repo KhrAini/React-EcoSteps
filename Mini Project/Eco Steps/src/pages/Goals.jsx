@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import pattern from '../assets/pattern.png';
+import eko from '../assets/eko.png';
 
 const GoalsPage = () => {
   const [goals, setGoals] = useState([]);
@@ -93,15 +94,26 @@ const GoalsPage = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center"
+      className="min-h-screen flex items-center justify-center px-4 md:px-8"
       style={{
         backgroundImage: `url(${pattern})`,
         backgroundRepeat: 'repeat',
         backgroundSize: 'contain',
+        backgroundColor: 'rgba(34, 139, 34, 0.2)',
       }}
     >
-      <div className="max-w-6xl w-full bg-white p-10 rounded-lg shadow-lg mt-24">
-        <h2 className="text-2xl font-bold text-center mb-4">Pilih Goals Anda</h2>
+      <div className="max-w-7xl w-full bg-white p-5 md:p-10 rounded-lg shadow-lg mt-18">
+        <div className="flex items-center justify-center flex-wrap">
+          <img
+            src={eko}
+            alt="Maskot Eko"
+            className="w-16 h-auto mr-4 sm:w-24 md:w-32"
+          />
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-[#42632d] mb-4">
+            Ayo pilih goals yang ingin kamu capai!
+          </h2>
+        </div>
+
 
         <div className="mb-4">
           <input
